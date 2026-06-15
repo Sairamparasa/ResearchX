@@ -1,0 +1,393 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --color-bg-dark: #050816;
+  --color-accent-purple: #9333EA;
+  --color-accent-blue: #3B82F6;
+  --color-accent-cyan: #06B6D4;
+}
+
+/* Base resets */
+:root {
+  --background: #050816;
+  --foreground: #E2E8F0;
+}
+
+body {
+  background-color: #050816;
+  color: #E2E8F0;
+  font-family: var(--font-sans, system-ui, sans-serif);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+.mono {
+  font-family: var(--font-mono, monospace);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Engineering grid mesh */
+.engineering-grid {
+  background-size: 50px 50px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.015) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.015) 1px, transparent 1px);
+}
+
+/* Glassmorphism Cards */
+.glass-panel, .glass-card {
+  background: rgba(255, 255, 255, 0.025);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.045);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 10px 40px rgba(6, 182, 212, 0.08);
+  transform: translateY(-2px);
+}
+
+.glass-pill {
+  background: rgba(5, 8, 22, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Radial Auroras */
+.aurora-purple {
+  filter: blur(140px);
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.12) 0%, transparent 70%);
+}
+
+.aurora-cyan {
+  filter: blur(140px);
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.1) 0%, transparent 70%);
+}
+
+.glow-hover:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.12);
+  border-color: rgba(6, 182, 212, 0.25);
+}
+
+/* Custom neon text glows */
+.glow-purple {
+  text-shadow: 0 0 30px rgba(147, 51, 234, 0.3);
+}
+.glow-cyan {
+  text-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+}
+
+/* Animation utilities */
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+}
+
+.pulse-slow {
+  animation: pulse-slow 3s infinite ease-in-out;
+}
+
+/* ==========================================================================
+   Light Theme System Overrides (Active when .dark class is NOT on html)
+   ========================================================================== */
+html:not(.dark) body {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+/* Escaped Tailwind background classes mapped to light slate/white */
+html:not(.dark) .bg-\[\#050816\] {
+  background-color: #f8fafc !important;
+}
+html:not(.dark) .bg-\[\#050816\]\/90 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+html:not(.dark) .bg-\[\#050816\]\/60 {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+}
+html:not(.dark) .bg-slate-950 {
+  background-color: #ffffff !important;
+}
+html:not(.dark) .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+}
+html:not(.dark) .bg-slate-950\/40 {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+html:not(.dark) .bg-slate-900 {
+  background-color: #f1f5f9 !important; /* slate-100 */
+}
+html:not(.dark) .bg-black {
+  background-color: #ffffff !important;
+}
+html:not(.dark) .bg-black\/60 {
+  background-color: rgba(255, 255, 255, 0.6) !important;
+}
+html:not(.dark) .bg-white\/\[0\.015\] {
+  background-color: rgba(15, 23, 42, 0.015) !important;
+}
+html:not(.dark) .bg-white\/\[0\.02\] {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+}
+html:not(.dark) .bg-white\/\[0\.03\] {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+}
+html:not(.dark) .bg-white\/\[0\.04\] {
+  background-color: rgba(15, 23, 42, 0.05) !important;
+}
+html:not(.dark) .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.04) !important;
+}
+html:not(.dark) .bg-white\/10 {
+  background-color: rgba(15, 23, 42, 0.08) !important;
+}
+html:not(.dark) .bg-purple-950\/10 {
+  background-color: rgba(147, 51, 234, 0.05) !important;
+}
+
+/* Escaped border classes mapped to light slate gray */
+html:not(.dark) .border-white\/5 {
+  border-color: rgba(15, 23, 42, 0.06) !important;
+}
+html:not(.dark) .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+html:not(.dark) .border-slate-700\/50 {
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+html:not(.dark) .border-slate-800 {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+html:not(.dark) .border-slate-900 {
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+html:not(.dark) .border-purple-900\/30 {
+  border-color: rgba(147, 51, 234, 0.15) !important;
+}
+
+/* Telemetry Grid Line Overrides */
+html:not(.dark) .engineering-grid {
+  background-image: 
+    linear-gradient(to right, rgba(15, 23, 42, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(15, 23, 42, 0.02) 1px, transparent 1px) !important;
+}
+
+/* Radial Auroras */
+html:not(.dark) .aurora-purple {
+  background: radial-gradient(circle, rgba(147, 51, 234, 0.04) 0%, transparent 70%) !important;
+}
+html:not(.dark) .aurora-cyan {
+  background: radial-gradient(circle, rgba(6, 182, 212, 0.035) 0%, transparent 70%) !important;
+}
+
+/* Frosted Glass Panels */
+html:not(.dark) .glass-panel, 
+html:not(.dark) .glass-card {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(20px) !important;
+  -webkit-backdrop-filter: blur(20px) !important;
+  border-color: rgba(15, 23, 42, 0.07) !important;
+}
+
+html:not(.dark) .glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(15, 23, 42, 0.14) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04) !important;
+}
+
+html:not(.dark) .glass-pill {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-color: rgba(15, 23, 42, 0.07) !important;
+}
+
+/* Typography Color Mapping */
+html:not(.dark) h1, 
+html:not(.dark) h2, 
+html:not(.dark) h3, 
+html:not(.dark) h4, 
+html:not(.dark) h5, 
+html:not(.dark) h6,
+html:not(.dark) .text-zinc-100, 
+html:not(.dark) .text-slate-100 {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .text-white {
+  color: #0f172a !important;
+}
+
+/* Restore button / badge text colors to white */
+html:not(.dark) button.text-white,
+html:not(.dark) a.text-white,
+html:not(.dark) button .text-white,
+html:not(.dark) a .text-white,
+html:not(.dark) .bg-gradient-to-r,
+html:not(.dark) .bg-gradient-to-tr,
+html:not(.dark) .bg-purple-600,
+html:not(.dark) .bg-blue-600,
+html:not(.dark) .bg-rose-500,
+html:not(.dark) .bg-cyan-500,
+html:not(.dark) .bg-purple-950,
+html:not(.dark) .bg-slate-900,
+html:not(.dark) .text-emerald-400,
+html:not(.dark) .text-cyan-400,
+html:not(.dark) .text-purple-400,
+html:not(.dark) .text-purple-900,
+html:not(.dark) .text-rose-400 {
+  color: inherit !important;
+}
+
+/* Restore literal white text on specific colored buttons */
+html:not(.dark) button .text-white,
+html:not(.dark) .bg-gradient-to-r .text-white,
+html:not(.dark) .bg-gradient-to-tr .text-white,
+html:not(.dark) .bg-purple-600 .text-white,
+html:not(.dark) .bg-blue-600 .text-white,
+html:not(.dark) .bg-rose-500 .text-white,
+html:not(.dark) .bg-slate-900 .text-white,
+html:not(.dark) .bg-slate-950 .text-white {
+  color: #ffffff !important;
+}
+
+html:not(.dark) .text-slate-200, 
+html:not(.dark) .text-zinc-200, 
+html:not(.dark) .text-slate-300, 
+html:not(.dark) .text-zinc-300 {
+  color: #1e293b !important; /* slate-800 */
+}
+
+html:not(.dark) .text-slate-400, 
+html:not(.dark) .text-zinc-400 {
+  color: #475569 !important; /* slate-600 */
+}
+
+html:not(.dark) .text-slate-500, 
+html:not(.dark) .text-zinc-500, 
+html:not(.dark) .text-zinc-600 {
+  color: #64748b !important; /* slate-500 */
+}
+
+/* Sidebar Panels */
+html:not(.dark) aside {
+  background: rgba(255, 255, 255, 0.8) !important;
+  border-right-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+html:not(.dark) aside a {
+  color: #475569 !important;
+}
+
+html:not(.dark) aside a:hover {
+  color: #0f172a !important;
+  background-color: rgba(15, 23, 42, 0.02) !important;
+}
+
+html:not(.dark) aside a.text-white {
+  color: #9333EA !important; /* Make active side menu highlight in purple */
+  font-weight: 600 !important;
+}
+
+html:not(.dark) aside button {
+  background: rgba(15, 23, 42, 0.02) !important;
+  border-color: rgba(15, 23, 42, 0.06) !important;
+  color: #475569 !important;
+}
+
+html:not(.dark) aside button:hover {
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+}
+
+/* Form Elements */
+html:not(.dark) input[type="text"], 
+html:not(.dark) input[type="email"], 
+html:not(.dark) input[type="password"], 
+html:not(.dark) select {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+}
+
+html:not(.dark) input[type="text"]:focus, 
+html:not(.dark) input[type="email"]:focus, 
+html:not(.dark) input[type="password"]:focus, 
+html:not(.dark) select:focus {
+  border-color: #9333EA !important;
+  box-shadow: 0 0 0 2px rgba(147, 81, 234, 0.1) !important;
+}
+
+html:not(.dark) input::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Modals Drawers */
+html:not(.dark) .relative.w-full.max-w-md.h-full {
+  background-color: rgba(255, 255, 255, 0.96) !important;
+  border-left-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+/* Command Palette dialog box */
+html:not(.dark) div[role="dialog"] .bg-slate-950\/80 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  color: #0f172a !important;
+}
+
+html:not(.dark) div[role="dialog"] .bg-white\/5 {
+  background-color: rgba(15, 23, 42, 0.03) !important;
+  color: #475569 !important;
+}
+
+html:not(.dark) div[role="dialog"] .border-white\/10 {
+  border-color: rgba(15, 23, 42, 0.07) !important;
+}
+
+html:not(.dark) div[role="dialog"] input {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+/* Custom tooltips */
+html:not(.dark) .recharts-default-tooltip {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+  color: #0f172a !important;
+}
+
+/* Tables */
+html:not(.dark) table thead tr {
+  border-bottom-color: rgba(15, 23, 42, 0.08) !important;
+}
+html:not(.dark) table tbody tr {
+  border-bottom-color: rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Scrollbars */
+html:not(.dark) ::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+html:not(.dark) ::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.16) !important;
+}

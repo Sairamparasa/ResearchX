@@ -1,5 +1,7 @@
 # 🔬 ResearchX - AI Research Intelligence Platform
 
+[![Live Demo](https://img.shields.io/badge/demo-live-emerald.svg?style=for-the-badge)](https://research-x-one.vercel.app/)
+
 ResearchX is a premium, enterprise-grade autonomous research platform. It leverages multi-agent orchestrations, real-time web crawlers, and semantic context engines to construct structured parameters, query global matrices, and compile verified, analyst-grade briefings.
 
 ---
